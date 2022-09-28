@@ -1,5 +1,37 @@
+import random
 
-from imp import source_from_cache
+source = "src\model\possible_words.txt"
+=
+
+def checkIfWordIsUsedInFile(txtfile,word):
+    
+    
+    file = open(txtfile,"r")
+    lines = file.readlines()
+    wordUsed = False
+    if(word in lines):
+        wordUsed=True
+    return wordUsed
+    
+
+checkIfWordIsUsedInFile(source,"monke")
 
 
-source_from_cache
+def findWords(txtfile):
+    file = open(txtfile,"r")
+    lines=file.readlines()
+    file.close()
+    return lines
+
+wordlist = findWords(source)
+
+randomWord=random.choice(wordlist)
+
+print(randomWord)
+
+
+
+
+
+
+
