@@ -2,4 +2,8 @@ Poo
 boo
 moo
 noo
-duu
+duubeset
+clack
+issue
+hyper
+cabal
