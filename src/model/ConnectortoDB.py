@@ -1,20 +1,24 @@
 import random
 
+#attributes and lists
 source = "src\model\possible_words.txt"
-=
+used= "src\model\\used_words.txt"
+
+
 
 def checkIfWordIsUsedInFile(txtfile,word):
-    
-    
-    file = open(txtfile,"r")
-    lines = file.readlines()
-    wordUsed = False
-    if(word in lines):
-        wordUsed=True
+    wordUsed=False    
+    with  open(txtfile,"r") as file:
+        
+        lines=file.read()
+        if(word in lines):
+            wordUsed=True
+
     return wordUsed
     
 
-checkIfWordIsUsedInFile(source,"monke")
+
+print(check)
 
 
 def findWords(txtfile):
@@ -25,9 +29,12 @@ def findWords(txtfile):
 
 wordlist = findWords(source)
 
-randomWord=random.choice(wordlist)
 
-print(randomWord)
+#find word:
+randomWord=random.choice(wordlist)
+check =checkIfWordIsUsedInFile(used,randomWord)
+#compare to list:
+
 
 
 
