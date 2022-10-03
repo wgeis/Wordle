@@ -1,14 +1,4 @@
-import random
 
-words ="banan","mango","pærer","æbler","melon","water"
-selectedword =""
-def select_randomword(list):
-    word = random.choice(list)
-    print("From select:",word)
+#here we are going to do the compare guess to word:
 
-    return word
-
-print("before line 12",selectedword)
-selectedword=select_randomword(words)
-print("after line 12,",selectedword)
 

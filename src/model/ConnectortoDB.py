@@ -1,19 +1,10 @@
 import random
 
+def class Connector
 #attributes and lists
 source = "src\model\possible_words.txt"
 used= "src\model\\used_words.txt"
 #find word:
-
-#single line:
-#randomword = random.choice(findWords(source))
-
-#print(randomWord)
-#compare to list:
-
-
-#merged code:
-
 
 def checkIfWordIsUsedInFile(txtfile,word):
     wordUsed=False    
@@ -25,8 +16,6 @@ def checkIfWordIsUsedInFile(txtfile,word):
 
     return wordUsed
     
-
-
 def findWords(txtfile):
 
     with  open(txtfile,"r") as file:
@@ -48,14 +37,17 @@ def addWordIfNotExists(txtfile,word):
 
 
 
-def searchAndCompareRandomWordToGuess():
+def getRandomWordAndCompareToUsedWords():
     wordlist = findWords(source)
     randomWord=random.choice(wordlist)
+    #Can be made as single line with randomword = random.choice(findWords(source))
     print(checkIfWordIsUsedInFile(used,randomWord))
     #Add if not exists
     addWordIfNotExists(used,randomWord)
 
-searchAndCompareRandomWordToGuess()
+getRandomWordAndCompareToUsedWords()
+
+
 
 
 
