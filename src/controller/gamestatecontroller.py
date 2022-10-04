@@ -4,10 +4,7 @@ sys.path.append("src\model")
 import ConnectortoDB
 # import the file
 
-alphabets_in_lowercase=[]
-#used for generating lower case letters. 
-for i in range(97,123):
-    alphabets_in_lowercase.append(chr(i))
+
 
 class gamestatecontroller:
     def __init__(self) -> None:
@@ -45,9 +42,12 @@ class gamestatecontroller:
             #print(guess," exists in the list")
             #print(self.usedguesseslist)
             return guess
-        def compareGuessToActualWord(guess):
 
-            for letter in guess:
+
+    def compareGuessToActualWord(guess):
+
+        for letter in guess:
+            print(letter)
 
                 
 
