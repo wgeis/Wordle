@@ -4,24 +4,63 @@ sys.path.append("src\model")
 import ConnectortoDB
 # import the file
 
+alphabets_in_lowercase=[]
+#used for generating lower case letters. 
+for i in range(97,123):
+    alphabets_in_lowercase.append(chr(i))
+
 class gamestatecontroller:
     def __init__(self) -> None:
+        self.source = "src\model\possible_words.txt"
+        self.used= "src\model\\used_words.txt"
         self.numberattempts= 5
         getword = ConnectortoDB.Wordfinder("","")
-        self.possiblewords= getword.findWords
-        self.selectedword = getword.getRandomWordAndCompareToUsedWords()
+        
+        self.selectedword= getword.getRandomWordAndCompareToUsedWords()
+        self.possiblewordslist = getword.findWords(self.source) #2309 words
+        #Returns a touple. First is a list of the possible words, the second is the word.
         self.wordisguessed=False
-        self.usedWords =[]
+        self.usedguesseslist =[] #This is for already attempted guesses
+
     def addGuessToUsedWordsList(self,guess):
-        self.usedWords.append(guess)
+        self.usedguesseslist.append(guess)
+    def validateGuess(self,guess):
+        """Validate the guess before processing it by separate method."""
+        guess = str.lower(guess)
+        #Can the word be accepted and then evaluated??
+        onlyLetters = guess.isalpha()
+        length= len(guess)==5   
+        wordExists=False
+        for word in self.possiblewordslist:
+            if guess in word:
+                #Funky error - when I print it out as a list, it gives me the \n. Clonky workaround but it helps.
+                #print("Found it")
+                wordExists= True
+
+        uniqueguess = guess not in self.usedguesseslist
+        
+        guessIsValid=onlyLetters and length and uniqueguess and wordExists==True
+        if(guessIsValid):
+            self.usedguesseslist.append(guess)
+            #print(guess," exists in the list")
+            #print(self.usedguesseslist)
+            return guess
+        def compareGuessToActualWord(guess):
+
+            for letter in guess:
+
+                
 
 Game = gamestatecontroller()
 
-def validateGuess():
-    guess = input()
-    if(len(guess)==5 and guess in Game.possiblewords):
-        print(guess)
 
+    
+#Game.validateGuess(input("GÆT NU BLUETOOTH \n"))
+print(Game.validateGuess("moron") )
+print(Game.validateGuess("homer") )
+print(Game.validateGuess("bully") )
+print(Game.validateGuess("sully") )
+print(len(Game.usedguesseslist))
 #print(Game.numberattempts)
 
 
