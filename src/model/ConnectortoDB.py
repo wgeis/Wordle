@@ -10,12 +10,24 @@ class Wordfinder:
 
 #attributes and lists
     def findWords(self,txtfile):
+        
         with  open(txtfile,"r") as file:
+          lines=file.readlines()
+          for line in lines:
+            line = line.strip("\n")
+            
+            #strip it of newline symbols.
+
+        return lines
+    def findWordsFromStandardFile(self):
+        
+        #For use if you don't have a standard file
+        with  open(self.source,"r") as file:
           lines=file.readlines()
         return lines
 
-
-    def checkIfWordIsUsedInFile(self,txtfile,word):
+#Works fine
+    def addWordIfNotUsedInFile(self,txtfile,word):
         wordUsed=False    
         with  open(txtfile,"r+") as file:
             
@@ -28,24 +40,20 @@ class Wordfinder:
         return wordUsed
 
 
-    def addWordIfNotExists(self,txtfile,word):
 
-        if not(self.checkIfWordIsUsedInFile(txtfile=txtfile,word=word)):
-        
-            with  open(txtfile,"a") as file:
-               file.write(word)
-            print("word added:"+word)
-
-
+#Randomword works
     def getRandomWordAndCompareToUsedWords(self):
+        """"this finds a random word and returns the list, THEN the word."""
         wordlist = self.findWords(self.source)
         
+       # print("from getrandoms",wordlist)
         randomWord=random.choice(wordlist)
-        while (self.checkIfWordIsUsedInFile(self.used,randomWord)):
+        while (self.addWordIfNotUsedInFile(self.used,randomWord)):
             #use a while loop to ensure that our word is not found in the list - and if it is, go back again.
             randomWord=random.choice(wordlist)
             #declare it to be new.
         else:
+           
             return randomWord
 
        
