@@ -1,4 +1,9 @@
+import sys
+sys.path.append("src\model")
+#Append the path.
+import ConnectortoDB
+# import the file
 
-#here we are going to do the compare guess to word:
-
+usefromoutside = ConnectortoDB.Wordfinder("","")
+print(usefromoutside.getRandomWordAndCompareToUsedWords)
 

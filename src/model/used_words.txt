@@ -7,3 +7,14 @@ clack
 issue
 hyper
 cabal
+delta
+staff
+bless
+poesy
+apart
+latch
+spree
+slurp
+grill
+slink
+globe
