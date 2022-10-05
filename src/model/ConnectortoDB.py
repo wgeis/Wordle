@@ -2,6 +2,7 @@
 import random
 
 class Wordfinder:
+    """This class is used to find a possible word - also contains logic to make sure it doesn't choose duplicates. """
     def __init__(self,source,used):
         self.source = "src\model\possible_words.txt"
         self.used= "src\model\\used_words.txt"
@@ -10,7 +11,7 @@ class Wordfinder:
 
 #attributes and lists
     def findWords(self,txtfile):
-        
+        """GLobal method for getting a list of words from a textifle. """
         with  open(txtfile,"r") as file:
           lines=file.readlines()
           for line in lines:
@@ -28,6 +29,7 @@ class Wordfinder:
 
 #Works fine
     def addWordIfNotUsedInFile(self,txtfile,word):
+        """Appends the file if the chosen word is not found in it. Used as a separate function to keep things untangled. But it violates DRY."""
         wordUsed=False    
         with  open(txtfile,"r+") as file:
             
@@ -43,7 +45,7 @@ class Wordfinder:
 
 #Randomword works
     def getRandomWordAndCompareToUsedWords(self):
-        """"this finds a random word and returns the list, THEN the word."""
+        """"this makes sure to generate a word not used previously. It utilizes the FindWords and AddWordNotUsed """
         wordlist = self.findWords(self.source)
         
        # print("from getrandoms",wordlist)
@@ -62,7 +64,7 @@ class Wordfinder:
 #test = Wordfinder(source="",used="")
 
 #singleword = test.getRandomWordAndCompareToUsedWords()
-#print(singleword)
+
 
 
 
