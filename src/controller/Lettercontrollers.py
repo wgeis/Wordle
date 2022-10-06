@@ -1,4 +1,5 @@
 import sys
+from typing import List
 sys.path.append("src\model")
 from LetterDataClass import LetterThatCanBePainted as Letterclass
 
@@ -22,9 +23,11 @@ class Lettercontroller:
 Controller = Lettercontroller()
 letters = Controller.getLettersArray()
 
+
 for letterclass in letters:
     print (letterclass.getLetter())
     
+fooo = List
 
 #test
     

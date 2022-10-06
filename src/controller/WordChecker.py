@@ -53,4 +53,37 @@ class WordChecker:
                pass 
 
 
-word = WordChecker()
+def simpleWordChecker(guess,guessMe):
+    #Only receive valid input
+    listOfLettersTosHow =""
+    for i in range(len(guess)):#Allows for variable lengths.
+            listOfLettersTosHow=listOfLettersTosHow+guess[i] #make new string, append with old.
+
+    for i in range(len(guess)):
+        print(i)
+        
+        
+                    
+        if(guess[i]==guessMe[i]):
+            #if the letter is a match, color the letter green in our list.
+            color="green"
+            print(color)
+
+                
+        elif(guess[i] in guessMe): #in it
+            color="yellow"
+            print(color)
+            #listOfLettersTosHow=listOfLettersTosHow.replace(listOfLettersTosHow[i],"?",1)
+        if(guess[i] not in guessMe): #Not in 
+                color="gray"
+                print(color)
+
+            
+                
+    return listOfLettersTosHow
+
+
+
+print(simpleWordChecker("qqnqa"))
+
+#word = WordChecker()
