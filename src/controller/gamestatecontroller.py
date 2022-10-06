@@ -21,9 +21,9 @@ class gamestatecontroller:
 
     def addGuessToUsedWordsList(self,guess):
         self.usedguesseslist.append(guess)
-    def validateGuess(self,guess):
+    def validateGuess(self,guess : str):
         """Validate the guess before processing it by separate method."""
-        guess = str.lower(guess)
+        guess = guess.lower()
         #Can the word be accepted and then evaluated??
         onlyLetters = guess.isalpha()
         length= len(guess)==5   
@@ -60,6 +60,7 @@ print(Game.validateGuess("moron") )
 print(Game.validateGuess("homer") )
 print(Game.validateGuess("bully") )
 print(Game.validateGuess("sully") )
+print(Game.validateGuess("sullee") )
 print(len(Game.usedguesseslist))
 #print(Game.numberattempts)
 
