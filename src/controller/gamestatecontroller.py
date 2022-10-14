@@ -37,7 +37,7 @@ class gamestatecontroller:
         for word in self.possiblewordslist:
             if guess in word:
                 #Funky error - when I print it out as a list, it gives me the \n. Clonky workaround but it helps.
-                #print("Found it")
+               
                 wordExists= True
 
         uniqueguess = guess not in self.usedguesseslist
@@ -81,7 +81,6 @@ class gamestatecontroller:
                 
 
 game = gamestatecontroller()
-#print(game.simpleWordChecker("banan","chonk"))
 
 #Lets try making the game as a console version. The game will run while...
 gameIsRunning = True
@@ -110,6 +109,10 @@ while gameIsRunning:
                 currentGuessThatIsShownToTheUser=game.simpleWordChecker(guess)
                 print(currentGuessThatIsShownToTheUser)
                 numberOfGuesses=numberOfGuesses+1
+                print(str(numberOfGuesses)+" forsøg brugt")
+        
+
+            
     
         
 
