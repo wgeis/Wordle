@@ -1,8 +1,13 @@
+
 import sys
 sys.path.append("src\model")
 #Append the path.
 import ConnectortoDB
 # import the file
+
+from colorama import init, Fore, Back
+init()
+
 
 
 
@@ -10,7 +15,8 @@ class gamestatecontroller:
     def __init__(self) -> None:
         self.source = "src\model\possible_words.txt"
         self.used= "src\model\\used_words.txt"
-        self.numberattempts= 5
+        self.wordLength= 6
+        self.numberofAttempts =0
         getword = ConnectortoDB.Wordfinder("","")
         
         self.selectedword= getword.getRandomWordAndCompareToUsedWords()
@@ -41,29 +47,78 @@ class gamestatecontroller:
             self.usedguesseslist.append(guess)
             #print(guess," exists in the list")
             #print(self.usedguesseslist)
-            return guess
+        elif not (wordExists):
+            print("The word is not in the list :(")
+        elif not (length):
+            print("how dare you not enter a word with %d letters. Shame! 🔔 "% self.wordLength) #Just for shizzles and giggles 
 
+        return guessIsValid
+   
+    def simpleWordChecker(self,guess):
+        currentGuessThatIsShownToTheUser =""
+        guessMe=self.selectedword
+        # for i in range(len(guess)):#Allows for variable lengths.
+        #         listOfLettersTosHow=listOfLettersTosHow+guess[i] #make new string, append with old.
 
-    def compareGuessToActualWord(guess):
+        for i in range(len(guess)):
+                   
+                                   
+            if(guess[i]==guessMe[i]):
+                #if the letter is a match, color the letter green in our list.
+                currentGuessThatIsShownToTheUser=currentGuessThatIsShownToTheUser+ Back.GREEN + guess[i] + Back.RESET
+                    
+            elif(guess[i] in guessMe): #in it
+                
+                currentGuessThatIsShownToTheUser=currentGuessThatIsShownToTheUser+ Back.YELLOW + guess[i] + Back.RESET
+                #listOfLettersTosHow=listOfLettersTosHow.replace(listOfLettersTosHow[i],"?",1)
+            if(guess[i] not in guessMe): #Not in 
+                    currentGuessThatIsShownToTheUser=currentGuessThatIsShownToTheUser+ Back.RED + guess[i] + Back.RESET
 
-        for letter in guess:
-            print(letter)
+                
+                    
+        return currentGuessThatIsShownToTheUser
 
                 
 
-Game = gamestatecontroller()
+game = gamestatecontroller()
+#print(game.simpleWordChecker("banan","chonk"))
+
+#Lets try making the game as a console version. The game will run while...
+gameIsRunning = True
 
 
+while gameIsRunning:
+    print("start a new game?y/n")
+    action = input()
+    if action =="n":
+        gameIsRunning=False
+    elif action=="y":
+        numberOfGuesses =0
+        print("Guess a word with 5 letters")
+
+        
+        while numberOfGuesses<6:
+            currentGuessThatIsShownToTheUser =""
+            guess = input()
+            if(guess=="exit"):
+                print("Det hemmelige ord var "+game.selectedword)
+                break         
+
+            
+            if(game.validateGuess(guess)):
+                #check if its a valid guess):
+                currentGuessThatIsShownToTheUser=game.simpleWordChecker(guess)
+                print(currentGuessThatIsShownToTheUser)
+                numberOfGuesses=numberOfGuesses+1
     
-#Game.validateGuess(input("GÆT NU BLUETOOTH \n"))
-print(Game.validateGuess("moron") )
-print(Game.validateGuess("homer") )
-print(Game.validateGuess("bully") )
-print(Game.validateGuess("sully") )
-print(Game.validateGuess("sullee") )
-print(len(Game.usedguesseslist))
-#print(Game.numberattempts)
+        
+
+              
+                
 
 
-#logic for checking words.
 
+
+
+
+#Find a word 
