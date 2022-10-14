@@ -5,5 +5,5 @@ import ConnectortoDB
 # import the file
 
 usefromoutside = ConnectortoDB.Wordfinder("","")
-print(usefromoutside.getRandomWordAndCompareToUsedWords)
+print(usefromoutside.getRandomWordAndCompareToUsedWords())
 

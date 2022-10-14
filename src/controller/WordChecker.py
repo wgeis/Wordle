@@ -1,4 +1,8 @@
 import sys
+from tkinter.ttk import Style
+from colorama import init, Fore, Back
+init()
+
 
 sys.path.append("src\model")
 from LetterDataClass import LetterThatCanBePainted as Letter
@@ -84,6 +88,8 @@ def simpleWordChecker(guess,guessMe):
 
 
 
-print(simpleWordChecker("qqnqa"))
+#print(simpleWordChecker("qqnqa"))
 
+frabruger= input("Gæt et ord på 5 bogstaver:")
+simpleWordChecker(frabruger,"banan")
 #word = WordChecker()
