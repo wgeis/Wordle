@@ -1,3 +1,5 @@
+from gettext import gettext
+from tkinter import Button
 import PyQt5
 import sys
 sys.path.append("src\view")
@@ -10,17 +12,14 @@ class gameLogic:
     def __init__(self) -> None:
     
         pass
-
-
     
     def setButtonListeners(self):
         self.BUTTONTEXT=self.pushButton.text()
+        
         self.pushButton.clicked.connect(lambda ch, buttonThatWasPressed=self.pushButton,buttontext=self.BUTTONTEXT:self.getButtonText(buttonThatWasPressed,buttontext))
         
 
     def getButtonText(self, buttonThatWasPressed,text):
         print("du har trykket på mig!",str(text))
-    def enterButton(self):
-        #valider om vores gæt er okay - send en string afsted med alle de aktuelle gæt.
-        pass
+    
     

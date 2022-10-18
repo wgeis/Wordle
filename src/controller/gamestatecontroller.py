@@ -80,36 +80,41 @@ class gamestatecontroller:
 
                 
 
+
+
+def gameIsActive():
+    while gameIsRunning:
+        print("start a new game?y/n")
+        action = input()
+        if action =="n":
+            gameIsRunning=False
+        elif action=="y":
+            numberOfGuesses =0
+            print("Guess a word with 5 letters")
+
+            
+            while numberOfGuesses<6:
+                currentGuessThatIsShownToTheUser =""
+                guess = input()
+                if(guess=="exit"):
+                    print("Det hemmelige ord var "+game.selectedword)
+                    break         
+
+                
+                if(game.validateGuess(guess)):
+                    #check if its a valid guess):
+                    currentGuessThatIsShownToTheUser=game.simpleWordChecker(guess)
+                    print(currentGuessThatIsShownToTheUser)
+                    numberOfGuesses=numberOfGuesses+1
+                    print(str(numberOfGuesses)+" forsøg brugt")    
+
+   
+
 game = gamestatecontroller()
 
 #Lets try making the game as a console version. The game will run while...
 gameIsRunning = True
-
-
-while gameIsRunning:
-    print("start a new game?y/n")
-    action = input()
-    if action =="n":
-        gameIsRunning=False
-    elif action=="y":
-        numberOfGuesses =0
-        print("Guess a word with 5 letters")
-
-        
-        while numberOfGuesses<6:
-            currentGuessThatIsShownToTheUser =""
-            guess = input()
-            if(guess=="exit"):
-                print("Det hemmelige ord var "+game.selectedword)
-                break         
-
-            
-            if(game.validateGuess(guess)):
-                #check if its a valid guess):
-                currentGuessThatIsShownToTheUser=game.simpleWordChecker(guess)
-                print(currentGuessThatIsShownToTheUser)
-                numberOfGuesses=numberOfGuesses+1
-                print(str(numberOfGuesses)+" forsøg brugt")
+gameIsActive()
         
 
             
