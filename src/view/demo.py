@@ -15,6 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1150, 727)
+        
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -298,7 +299,10 @@ class Ui_MainWindow(object):
     def setButtonListeners(self):
         self.BUTTONTEXT=self.pushButton.text()
 
-        self.pushButton.clicked.connect(lambda ch, buttonThatWasPressed=self.pushButton,buttontext=self.BUTTONTEXT:self.getButtonText(buttonThatWasPressed,buttontext))
+        self.pushButton.clicked.connect(lambda ch, 
+        buttonThatWasPressed=self.pushButton,
+        buttontext=self.BUTTONTEXT
+        :self.getButtonText(buttonThatWasPressed,buttontext))
         
 
     def getButtonText(self, buttonThatWasPressed,text):
@@ -314,8 +318,13 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    #Start applikation
     MainWindow = QtWidgets.QMainWindow()
+    #Vindue der bruger interne klasse QMainWindow.
     ui = Ui_MainWindow()
+    #lav objekt ud fra klassen UI MainWindow() 
     ui.setupUi(MainWindow)
+    #Setup User Interface
     MainWindow.show()
+    #Vis applikationen
     sys.exit(app.exec_())

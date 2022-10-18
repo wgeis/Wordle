@@ -61,33 +61,8 @@ class Wordfinder:
        
         
 
-#test = Wordfinder(source="",used="")
-
-#singleword = test.getRandomWordAndCompareToUsedWords()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#find word:
-
-
-
-
-
-
-
-
-
-
-
+# test = Wordfinder(source="",used="")
+# for i in range(1,100):
+#     singleword = test.getRandomWordAndCompareToUsedWords()
+#     print(singleword)
 
