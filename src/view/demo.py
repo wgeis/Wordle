@@ -300,9 +300,9 @@ class Ui_MainWindow(object):
         self.BUTTONTEXT=self.pushButton.text()
 
         self.pushButton.clicked.connect(lambda ch, 
-        buttonThatWasPressed=self.pushButton,
-        buttontext=self.BUTTONTEXT
+        buttonThatWasPressed=self.pushButton,buttontext=self.BUTTONTEXT
         :self.getButtonText(buttonThatWasPressed,buttontext))
+        self.pushButton_10.clicked.connect(self,)
         
 
     def getButtonText(self, buttonThatWasPressed,text):
