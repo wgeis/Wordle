@@ -1,0 +1,10 @@
+.greenButton{
+    background-color: green;border-style: ridge;text-color:white;
+}
+.redButton{
+    background-color: red;border-style: ridge;text-color:white;
+}
+.grayButton{
+    background-color: gray;border-style: ridge;text-color:white;
+    
+}
