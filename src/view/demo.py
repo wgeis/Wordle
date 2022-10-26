@@ -299,16 +299,21 @@ class Ui_MainWindow(object):
     def setButtonListeners(self):
         self.BUTTONTEXT=self.pushButton.text()
 
-        self.pushButton.clicked.connect(lambda ch, 
-        buttonThatWasPressed=self.pushButton,buttontext=self.BUTTONTEXT
-        :self.getButtonText(buttonThatWasPressed,buttontext))
+        self.pushButton.clicked.connect(lambda ch, buttonThatWasPressed=self.pushButton,buttontext=self.BUTTONTEXT:self.getButtonText(buttonThatWasPressed,buttontext))
         
         
 
     def getButtonText(self, buttonThatWasPressed,text):
         print("du har trykket på mig!",text)
         
-       
+    def keyboardPressed(self,QShortcut):
+        
+        self.msgSc = QShortcut(QtGui.QKeySequence('a'), self)
+
+        self.msgSc.activated.connect(lambda : QMessageBox.information(self,
+            'Message', 'Ctrl + M initiated'))
+
+
 
 
         

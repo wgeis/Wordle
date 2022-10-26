@@ -3,6 +3,7 @@ import sys
 sys.path.append("src\model")
 #Append the path.
 import ConnectortoDB
+
 # import the file
 
 from colorama import init, Fore, Back
@@ -10,13 +11,11 @@ init()
 
 
 
-
-class gamestatecontroller:
+class gamestatecontroller():
     def __init__(self) -> None:
         self.source = "src\model\possible_words.txt"
         self.used= "src\model\\used_words.txt"
-        self.wordLength= 6
-        self.numberofAttempts =0
+       
         getword = ConnectortoDB.Wordfinder("","")
         
         self.selectedword= getword.getRandomWordAndCompareToUsedWords()
@@ -77,13 +76,17 @@ class gamestatecontroller:
                 
                     
         return currentGuessThatIsShownToTheUser
+  
 
                 
 
+game = gamestatecontroller()
+gameIsRunning = True
 
 
-def gameIsActive():
-    while gameIsRunning:
+
+while gameIsRunning:
+        print("type exit to stop game and get the secret word")
         print("start a new game?y/n")
         action = input()
         if action =="n":
@@ -106,16 +109,20 @@ def gameIsActive():
                     currentGuessThatIsShownToTheUser=game.simpleWordChecker(guess)
                     print(currentGuessThatIsShownToTheUser)
                     numberOfGuesses=numberOfGuesses+1
-                    print(str(numberOfGuesses)+" forsøg brugt")    
+                    print(str(numberOfGuesses)+" forsøg brugt")  
+      
 
    
 
-game = gamestatecontroller()
+
 
 #Lets try making the game as a console version. The game will run while...
-gameIsRunning = True
-gameIsActive()
+
+
         
+
+
+
 
             
     

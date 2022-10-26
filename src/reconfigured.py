@@ -10,8 +10,12 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtWidgets import QWidget, QShortcut, QApplication, QMessageBox
+from PyQt5.QtGui import QKeySequence
 
-class Ui_MainWindow(object):
+
+class Ui_MainWindow(QWidget):
 
 
     def setupUi(self, MainWindow):
@@ -537,10 +541,30 @@ class Ui_MainWindow(object):
         self.pushButton_35.setText(_translate("MainWindow", "N"))
         self.pushButton_36.setText(_translate("MainWindow", "M"))
         self.enterbutton.setText(_translate("MainWindow", "Enter"))
+        self.setButtonListeners()
+        self.keyboardPressed()
 
-    def stuff(self):
-        pass
 
+
+    def setButtonListeners(self):
+        self.BUTTONTEXT=self.aButton.text()
+
+        self.aButton.clicked.connect(lambda ch, buttonThatWasPressed=self.aButton,buttontext=self.BUTTONTEXT:self.getButtonText(buttonThatWasPressed,buttontext))
+        
+        
+
+    def getButtonText(self, buttonThatWasPressed,text):
+        print("du har trykket på mig!",text)
+        pass 
+        
+    def keyboardPressed(self):
+        
+        self.shortcut1 = QShortcut(QKeySequence('a'),self)
+        self.shortcut1.activated.connect(self.on_open)
+    
+    @pyqtSlot()
+    def on_open(self):
+        print("A!!")
 
 
 
@@ -552,5 +576,6 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+    
     MainWindow.show()
     sys.exit(app.exec_())
